@@ -11,7 +11,7 @@ sudoku::sudoku()
 }
 void sudoku::randomgenerate()
 {
-	int i,j;
+	int i, j;
 	//初始化数组
 	for (i = 0; i < 9; i++)
 		temp[i] = 0;
@@ -31,10 +31,26 @@ void sudoku::randomgenerate()
 }
 void sudoku::init()
 {
-	int i , j=0 ,k=0;
-	
+	int i, j = 0, k = 0;
+
 	//填写1号方格
 	randomgenerate();
+
+	//作业要求为第一个填写自己的学号尾数，我的尾数为9；
+	for(i = 0; i < 9; ++i)
+	{
+		if (temp[i] == 9)
+			k = i;//记录为9的位置
+	}
+	if (k != 0)//如果第一位不是9
+	{
+		//交换位置
+		int num = temp[0];
+		temp[0] = 9;
+		temp[k] = num;
+	}
+
+	k = 0;
 	for (i=0; i < 3; i++)
 	{
 		for (j=0; j < 3; j++)
