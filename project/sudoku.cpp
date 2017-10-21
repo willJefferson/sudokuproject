@@ -36,10 +36,10 @@ void sudoku::init()
 	//填写1号方格
 	randomgenerate();
 
-	//作业要求为第一个填写自己的学号尾数，我的尾数为9；
+	//学号尾数为79，则(7+9)%9+1=8；
 	for(i = 0; i < 9; ++i)
 	{
-		if (temp[i] == 9)
+		if (temp[i] == 8)//第一位为8
 			k = i;//记录为9的位置
 	}
 	if (k != 0)//如果第一位不是9
@@ -165,10 +165,22 @@ void sudoku::sudoWrite(std::ostream& out)
 	Buff[k] = '\0';
 	out << Buff ;
 }
-	
+void sudoku::display()
+{
+	int i, j;
+	for (i = 0; i < 9; ++i)
+	{
+		for (j = 0; j < 9; ++j)
+		{
+			std::cout << sudo[i][j] << ' ';
+		}
+		std::cout << '\n';
+	}
+}
 sudoku::~sudoku()
 {
 }
+
 int main(int agrc, char*agrv[])
 {
 	int N=0;
@@ -193,14 +205,16 @@ int main(int agrc, char*agrv[])
 				sudoku a;
 				a.init();
 				a.sudoSolving();
-				a.sudoWrite(writer);
+				//a.sudoWrite(writer);
+				a.display();
 				if (N)
-					writer << '\n';
+					std::cout << '\n';
+					//writer << '\n';
 			}
 		}
 	}
 	else
 		std::cout << "参数个数必须为3个！" << std::endl;
 	return 0;
-
+	
 }
