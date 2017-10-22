@@ -183,7 +183,7 @@ int main(int agrc, char*agrv[])
 		else
 		{
 			std::ofstream writer;
-			writer.open("sudoku.txt", std::ios::out | std::ios::app);
+			writer.open("sudoku.txt", std::ios::out );
 			if (!writer.is_open())
 			{
 				return -1;
