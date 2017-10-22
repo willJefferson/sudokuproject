@@ -46,7 +46,7 @@ void sudoku::init()
 	{
 		//ΩªªªŒª÷√
 		int num = temp[0];
-		temp[0] = 9;
+		temp[0] = 8;
 		temp[k] = num;
 	}
 
@@ -165,18 +165,6 @@ void sudoku::sudoWrite(std::ostream& out)
 	Buff[k] = '\0';
 	out << Buff ;
 }
-void sudoku::display()
-{
-	int i, j;
-	for (i = 0; i < 9; ++i)
-	{
-		for (j = 0; j < 9; ++j)
-		{
-			std::cout << sudo[i][j] << ' ';
-		}
-		std::cout << '\n';
-	}
-}
 sudoku::~sudoku()
 {
 }
@@ -205,11 +193,9 @@ int main(int agrc, char*agrv[])
 				sudoku a;
 				a.init();
 				a.sudoSolving();
-				//a.sudoWrite(writer);
-				a.display();
+				a.sudoWrite(writer);
 				if (N)
-					std::cout << '\n';
-					//writer << '\n';
+					writer << '\n';
 			}
 		}
 	}
